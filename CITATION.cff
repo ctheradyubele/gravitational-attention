@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Gravitational Attention in Pretrained Transformers: code, protocol and results"
+type: software
+license: MIT
+repository-code: "https://github.com/ctheradyubele/gravitational-attention"
+authors:
+  - family-names: "[Lastname]"
+    given-names: "[Firstname]"
+  - family-names: "[Lastname]"
+    given-names: "[Firstname]"
+preferred-citation:
+  type: article
+  title: "Gravitational Attention in Pretrained Transformers: An Interpretability-Accuracy Trade-Off"
+  journal: "Applied Sciences"
+  year: 2026
+  authors:
+    - family-names: "[Lastname]"
+      given-names: "[Firstname]"
+    - family-names: "[Lastname]"
+      given-names: "[Firstname]"

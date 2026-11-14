@@ -1,0 +1,8 @@
+variant,mean,sd,n
+hybrid,92.202,0.353,5
+simplified,92.431,0.466,5
+hybrid_nodist,92.661,0.363,5
+pure,90.069,0.350,5
+hybrid_fixedlam,92.477,0.588,5
+l2,92.225,0.496,5
+standard,92.248,0.299,5

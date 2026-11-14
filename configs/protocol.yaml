@@ -1,0 +1,58 @@
+# Fixed experimental parameters. Changing anything here after the pilot is a protocol deviation
+# and must be recorded in DEVIATIONS.md with the date and the reason.
+
+base_model: bert-base-uncased
+runs_dir: runs
+
+adapt:                      # Phase A: equal-budget continued MLM pre-training (WikiText-103)
+  variants: [standard, hybrid, pure, simplified, hybrid_nodist, hybrid_fixedlam, l2]
+  steps: 10000
+  batch_size: 256
+  micro_batch: 64
+  seq_len: 128
+  lr: 5.0e-5
+  gam_lr: 1.0e-3
+  warmup: 1000
+  seed: 0
+
+glue:
+  tasks: [cola, sst2, mrpc, stsb, qqp, mnli, qnli, rte]
+  main_variants: [standard, hybrid, pure, simplified, l2]
+  lr_grid: [2.0e-5, 3.0e-5, 5.0e-5]
+  selection_seed: 0          # LR chosen on the held-out split with this seed only
+  final_seeds: [1, 2, 3, 4, 5]
+  epochs: 3
+  batch_size: 32
+  max_len: 128
+  gam_lr: 1.0e-3
+  eval_every: {mnli: 2000, qqp: 2000, qnli: 1000, sst2: 250, cola: 100000, mrpc: 100000, stsb: 100000, rte: 100000}
+  record_energy_tasks: [sst2]
+  reference_unadapted: true  # also run the original bert-base (no Phase A) as a reference row
+
+ablation:
+  task: sst2
+  variants: [hybrid_nodist, hybrid_fixedlam]   # plus hybrid, simplified, pure, standard from the main runs
+  lr_from: hybrid
+
+esnli:
+  variants: [standard, hybrid, pure, simplified]
+  seeds: [1, 2, 3, 4, 5]
+  epochs: 2
+  lr_from_task: mnli         # reuse the LR selected for MNLI (same task family) for each variant
+  ig_variants_all_seeds: [standard]
+  ig_variants_seed1: [hybrid, pure]
+
+data_size:
+  task: mnli
+  sizes: [2500, 8500]
+  variants: [standard, hybrid, pure]
+  seeds: [1, 2, 3, 4, 5]
+
+benchmark:
+  lengths: "128,512,1024,2048"
+
+pilot:
+  seed: 99
+  adapt_steps: 300
+  task: sst2
+  variants: [standard, hybrid, pure]

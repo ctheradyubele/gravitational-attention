@@ -1,0 +1,8 @@
+variant,final_val_loss,final_val_ppl
+hybrid,1.5410,4.67
+hybrid_fixedlam,1.5413,4.67
+hybrid_nodist,1.5414,4.67
+l2,1.5603,4.76
+pure,1.5766,4.84
+simplified,1.5411,4.67
+standard,1.5416,4.67

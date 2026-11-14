@@ -1,0 +1,97 @@
+ablation:
+  lr_from: hybrid
+  task: sst2
+  variants:
+  - hybrid_nodist
+  - hybrid_fixedlam
+adapt:
+  batch_size: 256
+  gam_lr: 0.001
+  lr: 5.0e-05
+  micro_batch: 64
+  seed: 0
+  seq_len: 128
+  steps: 10000
+  variants:
+  - standard
+  - hybrid
+  - pure
+  - simplified
+  - hybrid_nodist
+  - hybrid_fixedlam
+  - l2
+  warmup: 1000
+base_model: bert-base-uncased
+benchmark:
+  lengths: 128,512,1024,2048
+data_size:
+  seeds:
+  - 1
+  - 2
+  sizes:
+  - 60
+  - 120
+  task: mnli
+  variants:
+  - standard
+  - hybrid
+  - pure
+esnli:
+  epochs: 2
+  ig_variants_all_seeds:
+  - standard
+  ig_variants_seed1:
+  - hybrid
+  - pure
+  lr_from_task: mnli
+  seeds:
+  - 1
+  - 2
+  variants:
+  - standard
+  - hybrid
+  - pure
+  - simplified
+glue:
+  batch_size: 32
+  epochs: 3
+  eval_every:
+    cola: 100000
+    mnli: 2000
+    mrpc: 100000
+    qnli: 1000
+    qqp: 2000
+    rte: 100000
+    sst2: 250
+    stsb: 100000
+  final_seeds:
+  - 1
+  - 2
+  gam_lr: 0.001
+  lr_grid:
+  - 2.0e-05
+  - 5.0e-05
+  main_variants:
+  - standard
+  - hybrid
+  - pure
+  - simplified
+  - l2
+  max_len: 128
+  record_energy_tasks:
+  - sst2
+  reference_unadapted: true
+  selection_seed: 0
+  tasks:
+  - sst2
+  - stsb
+  - mnli
+pilot:
+  adapt_steps: 300
+  seed: 99
+  task: sst2
+  variants:
+  - standard
+  - hybrid
+  - pure
+runs_dir: runs

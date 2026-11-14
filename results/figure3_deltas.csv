@@ -1,0 +1,17 @@
+task,variant,mean_delta,sd_delta
+cola,pure,-7.773,4.129
+sst2,pure,-2.179,0.429
+mrpc,pure,-1.361,1.091
+stsb,pure,-1.851,0.600
+qqp,pure,-6.893,2.998
+mnli,pure,-11.487,2.346
+qnli,pure,-5.506,0.690
+rte,pure,-6.498,4.897
+cola,hybrid,-0.227,1.678
+sst2,hybrid,-0.046,0.174
+mrpc,hybrid,0.597,0.586
+stsb,hybrid,0.065,0.125
+qqp,hybrid,0.059,0.254
+mnli,hybrid,0.024,0.196
+qnli,hybrid,-0.278,0.458
+rte,hybrid,0.217,1.886
